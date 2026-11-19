@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hussain Singapuri — GTM Engineer</title>
+<meta name="description" content="Hussain Singapuri — GTM engineer who writes real code. Signal-based outbound, waterfall enrichment, CRM automation, deliverability and Claude agents for B2B revenue teams.">
+<meta property="og:title" content="Hussain Singapuri — GTM Engineer">
+<meta property="og:description" content="I build the systems that find, reach and win customers: signals → enrichment → AI personalization → CRM.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Person","name":"Hussain Singapuri","jobTitle":"GTM Engineer","email":"mailto:Hussainsingapuri24@gmail.com","address":{"@type":"PostalAddress","addressLocality":"Pune","addressCountry":"IN"},"knowsAbout":["GTM engineering","Clay","n8n","HubSpot","Cold email deliverability","Python","Claude API","AI agents"]}
+</script>
+<style>
+:root{
+  --bg:#0e0f0c; --panel:#161813; --line:#2a2d24; --ink:#ecebe3; --mute:#9a9a8c;
+  --lime:#c8f560; --amber:#f5b860; --serif:'Fraunces',Georgia,serif;
+  --sans:'Inter',system-ui,sans-serif; --mono:'IBM Plex Mono',ui-monospace,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font:16px/1.6 var(--sans);-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+nav{position:sticky;top:0;z-index:5;background:rgba(14,15,12,.85);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;justify-content:space-between;align-items:center;height:60px}
+.logo{font:500 14px var(--mono);letter-spacing:.04em}
+.logo b{color:var(--lime);font-weight:500}
+nav ul{display:flex;gap:22px;list-style:none;font:14px var(--mono)}
+nav a{text-decoration:none;color:var(--mute)} nav a:hover{color:var(--ink)}
+header{padding:96px 0 72px;border-bottom:1px solid var(--line)}
+.kicker{font:13px var(--mono);color:var(--lime);letter-spacing:.08em;text-transform:uppercase}
+h1{font:700 clamp(40px,6.4vw,76px)/1.02 var(--serif);letter-spacing:-.02em;margin:18px 0 24px;max-width:15ch}
+h1 em{font-style:normal;color:var(--lime)}
+.lede{font-size:19px;color:#cfcdc2;max-width:62ch}
+.cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:34px}
+.btn{font:500 14px var(--mono);padding:12px 18px;border:1px solid var(--line);text-decoration:none;border-radius:2px}
+.btn.primary{background:var(--lime);color:#111;border-color:var(--lime)}
+.btn:hover{border-color:var(--ink)}
+.pipe{margin-top:56px;display:grid;grid-template-columns:repeat(5,1fr);border:1px solid var(--line)}
+.pipe div{padding:16px 14px;border-right:1px solid var(--line);font:13px var(--mono);color:var(--mute)}
+.pipe div:last-child{border-right:0}
+.pipe span{display:block;color:var(--ink);font-size:14px;margin-top:4px}
+section{padding:80px 0;border-bottom:1px solid var(--line)}
+h2{font:700 clamp(28px,3.6vw,40px)/1.1 var(--serif);margin-bottom:12px}
+.sub{color:var(--mute);max-width:64ch;margin-bottom:40px}
+.proj{display:grid;grid-template-columns:72px 1fr;gap:24px;padding:32px 0;border-top:1px solid var(--line)}
+.proj:first-of-type{border-top:0}
+.num{font:500 40px var(--serif);color:var(--lime);line-height:1}
+.proj h3{font:600 22px var(--sans);margin-bottom:6px}
+.proj h3 a{text-decoration:none} .proj h3 a:hover{color:var(--lime)}
+.proj .tag{font:12px var(--mono);color:var(--amber);margin-bottom:12px}
+.proj dl{display:grid;grid-template-columns:110px 1fr;gap:6px 18px;margin-top:12px;font-size:15px}
+.proj dt{font:12px var(--mono);color:var(--mute);text-transform:uppercase;padding-top:3px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.chips span{font:12px var(--mono);border:1px solid var(--line);padding:4px 9px;color:#cfcdc2}
+.links{margin-top:14px;font:13px var(--mono)} .links a{color:var(--lime);margin-right:18px}
+.note{margin-top:28px;padding:16px 18px;border-left:3px solid var(--amber);background:var(--panel);font-size:14px;color:#cfcdc2}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.grid3>div{background:var(--bg);padding:24px}
+.grid3 h4{font:500 13px var(--mono);color:var(--lime);margin-bottom:10px;text-transform:uppercase;letter-spacing:.06em}
+.grid3 p,.grid3 li{font-size:15px;color:#cfcdc2}
+.grid3 ul{list-style:none} .grid3 li{padding:3px 0}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:48px}
+.contact h2{font-size:clamp(34px,5vw,56px)}
+.contact a.mail{font:500 clamp(18px,2.6vw,26px) var(--mono);color:var(--lime)}
+footer{padding:32px 0;color:var(--mute);font:13px var(--mono)}
+@media (max-width:760px){
+  nav ul{display:none}
+  .pipe{grid-template-columns:1fr 1fr}.pipe div{border-bottom:1px solid var(--line)}
+  .proj{grid-template-columns:1fr}.proj dl{grid-template-columns:1fr}
+  .grid3,.two{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<nav><div class="wrap">
+  <div class="logo">hussain<b>.gtm</b></div>
+  <ul><li><a href="#work">Work</a></li><li><a href="#how">How I work</a></li><li><a href="#about">About</a></li><li><a href="#contact">Contact</a></li></ul>
+</div></nav>
+
+<header><div class="wrap">
+  <p class="kicker">GTM Engineer · Pune, India · Open to remote</p>
+  <h1>I build the systems that <em>find, reach and win</em> customers.</h1>
+  <p class="lede">I spent 3 years as a full-stack developer at a US medtech company. Now I work on the revenue side as a GTM engineer: buying signals, waterfall enrichment, AI-personalized outbound, CRM automation and deliverability. Where no-code stops, I write production code.</p>
+  <div class="cta">
+    <a class="btn primary" href="#work">See the work ↓</a>
+    <a class="btn" href="mailto:Hussainsingapuri24@gmail.com">Hussainsingapuri24@gmail.com</a>
+    <a class="btn" href="https://www.linkedin.com/in/hussain-singapuri-18437225a/">LinkedIn</a>
+    <a class="btn" href="https://github.com/goalgetter53">GitHub</a>
+  </div>
+  <div class="pipe">
+    <div>01 · signal<span>who's buying now</span></div>
+    <div>02 · enrich<span>waterfall, cheapest first</span></div>
+    <div>03 · score<span>ICP fit 0–100</span></div>
+    <div>04 · personalize<span>Claude-written</span></div>
+    <div>05 · sync<span>CRM + sequencer</span></div>
+  </div>
+</div></header>
+
+<section id="work"><div class="wrap">
+  <h2>Selected GTM builds</h2>
+  <p class="sub">Each project is written up as a business case: the problem, what I built, the stack, and the results. Every number on this page is either live data or clearly marked as a demo run on fictional data.</p>
+
+  <article class="proj">
+    <div class="num">01</div>
+    <div>
+      <h3><a href="https://github.com/goalgetter53/signal-outbound-engine">Signal-based outbound engine</a></h3>
+      <p class="tag">Outbound · Enrichment · ICP scoring</p>
+      <dl>
+        <dt>Problem</dt><dd>Static lead lists burn domains and get under 1% replies. Teams need to reach accounts when they're actually buying.</dd>
+        <dt>Built</dt><dd>A pipeline that detects hiring, funding and tech-stack signals, then enriches contacts through a provider waterfall that stops at the first verified hit. It scores each account against a weighted ICP, has Claude write a first line per contact, and exports a ready-to-send Instantly CSV with a cost and coverage report. A matching Clay table spec is included.</dd>
+      </dl>
+      <div class="chips"><span>Clay</span><span>Python</span><span>Claude API</span><span>Apollo / Hunter / Prospeo</span><span>Instantly</span></div>
+      <div class="links"><a href="https://github.com/goalgetter53/signal-outbound-engine">Code + write-up →</a></div>
+    </div>
+  </article>
+
+  <article class="proj">
+    <div class="num">02</div>
+    <div>
+      <h3><a href="https://github.com/goalgetter53/gtm-job-hunt-engine">I GTM'd my own job hunt</a></h3>
+      <p class="tag">Live campaign · Signals · Personalization</p>
+      <dl>
+        <dt>Problem</dt><dd>Hundreds of applicants send the same résumé to the same GTM roles.</dd>
+        <dt>Built</dt><dd>I treated hiring companies as accounts. The engine pulls GTM-engineer openings from public job-board APIs and scores them for fit. For each match it writes a research brief on the hiring team's own go-to-market motion, a 1:1 email and a Loom script, then tracks the funnel weekly. If you got an email from me, this is the system that sent it.</dd>
+      </dl>
+      <div class="chips"><span>Greenhouse / Lever APIs</span><span>Python</span><span>Claude API</span><span>Loom</span></div>
+      <div class="links"><a href="https://github.com/goalgetter53/gtm-job-hunt-engine">Code + funnel log →</a></div>
+    </div>
+  </article>
+
+  <article class="proj">
+    <div class="num">03</div>
+    <div>
+      <h3><a href="https://github.com/goalgetter53/clay-hubspot-sync">Clay → HubSpot sync in n8n</a></h3>
+      <p class="tag">CRM integration · Data hygiene</p>
+      <dl>
+        <dt>Problem</dt><dd>Enriched data dies in spreadsheets, and manual imports create duplicate CRM records.</dd>
+        <dt>Built</dt><dd>An importable n8n workflow. A Clay webhook feeds validation and normalization, then dedupe by email and then by domain, then upserts Company and Contact records and associates them. It retries with backoff on 429/5xx and sends failures to a dead-letter branch. A YAML field map and a test harness replay bad payloads. It mirrors my own Clay → CRM pipeline.</dd>
+      </dl>
+      <div class="chips"><span>n8n</span><span>HubSpot CRM v3 API</span><span>Clay</span><span>Webhooks</span></div>
+      <div class="links"><a href="https://github.com/goalgetter53/clay-hubspot-sync">Workflow + architecture →</a></div>
+    </div>
+  </article>
+
+  <article class="proj">
+    <div class="num">04</div>
+    <div>
+      <h3><a href="https://github.com/goalgetter53/cold-email-deliverability-kit">Cold email deliverability kit</a></h3>
+      <p class="tag">Infrastructure · DNS · Warmup</p>
+      <dl>
+        <dt>Problem</dt><dd>Great copy is worthless if it lands in spam. Most outbound programs fail at the infrastructure layer.</dd>
+        <dt>Built</dt><dd>A CLI that audits SPF (including the 10-lookup limit), DKIM, DMARC and MX. It prints the exact DNS records to add, suggests secondary outreach domains, and generates a warmup and ramp schedule with inbox rotation. It ships with a full deliverability SOP that follows Gmail, Yahoo and Outlook bulk-sender rules.</dd>
+      </dl>
+      <div class="chips"><span>Python</span><span>DNS / SPF / DKIM / DMARC</span><span>Google Workspace</span><span>Postmaster Tools</span></div>
+      <div class="links"><a href="https://github.com/goalgetter53/cold-email-deliverability-kit">CLI + playbook →</a></div>
+    </div>
+  </article>
+
+  <article class="proj">
+    <div class="num">05</div>
+    <div>
+      <h3><a href="https://github.com/goalgetter53/claude-inbound-lead-agent">Claude inbound lead agent</a></h3>
+      <p class="tag">AI agent · Speed-to-lead · Routing</p>
+      <dl>
+        <dt>Problem</dt><dd>Inbound leads wait hours for a reply while reps spend time on poor fits.</dd>
+        <dt>Built</dt><dd>A FastAPI service with a Claude tool-use agent. It researches the lead's company site, checks the CRM, and returns validated JSON with ICP score, intent, route (AE, nurture, self-serve or disqualify) and a draft reply. Fetched web text gets prompt-injection guardrails. It includes an eval harness and an MCP server so Claude Code can qualify leads directly.</dd>
+      </dl>
+      <div class="chips"><span>Claude API · tool use</span><span>FastAPI</span><span>MCP</span><span>Evals</span></div>
+      <div class="links"><a href="https://github.com/goalgetter53/claude-inbound-lead-agent">Code + evals →</a></div>
+    </div>
+  </article>
+
+  <p class="note">Honesty note: demo outputs in these repos come from fictional sample data and say so. Live campaign numbers (sent, replies, meetings) are added to each write-up as they come in, never estimated.</p>
+</div></section>
+
+<section id="how"><div class="wrap">
+  <h2>How I work</h2>
+  <p class="sub">GTM engineering is revenue problems first and tools second.</p>
+  <div class="grid3">
+    <div><h4>1 · Diagnose</h4><p>Start from the funnel. Where is pipeline leaking: targeting, data, copy, deliverability or speed-to-lead? Define the ICP before building anything.</p></div>
+    <div><h4>2 · Build</h4><p>Use Clay and n8n where they're fastest, and Python, APIs and Claude agents where they hit limits. Version-control everything and document it for handover.</p></div>
+    <div><h4>3 · Measure</h4><p>Track coverage, cost per enriched contact, reply and meeting rates. Run weekly experiments and cut what doesn't move pipeline.</p></div>
+  </div>
+</div></section>
+
+<section id="about"><div class="wrap two">
+  <div>
+    <h2>About</h2>
+    <p class="sub" style="margin-bottom:18px">I was a full-stack developer at a US medtech company (2023–2026), where I shipped web apps, a CRM, and 5 Android apps that are live on Google Play. I also did security testing on those apps. Today I build AI agents and revenue systems.</p>
+    <p class="sub">That background is my edge in GTM: I can read an API doc, write the custom connector, and debug the webhook myself, without filing a ticket.</p>
+  </div>
+  <div class="grid3" style="grid-template-columns:1fr">
+    <div><h4>Stack</h4><ul>
+      <li>Clay · n8n · Make · Zapier</li>
+      <li>HubSpot · Salesforce basics · Supabase / Postgres</li>
+      <li>Instantly · Smartlead · Apollo · Apify</li>
+      <li>Python · TypeScript · SQL · REST / webhooks</li>
+      <li>Claude API · MCP · Claude Code · Cursor</li>
+    </ul></div>
+    <div><h4>Credentials</h4><ul>
+      <li>Claude Certified Developer – Foundations</li>
+      <li>Claude Certified Orchestrator – Foundations</li>
+      <li>Google Cloud Generative AI Leader</li>
+      <li>Vishwakarma Institute of Technology · Computer Science coursework (2022–2025)</li>
+    </ul></div>
+  </div>
+</div></section>
+
+<section id="contact" class="contact"><div class="wrap">
+  <p class="kicker">Hiring a GTM engineer?</p>
+  <h2>Send me your funnel. I'll send back where it leaks.</h2>
+  <p style="margin:22px 0"><a class="mail" href="mailto:Hussainsingapuri24@gmail.com">Hussainsingapuri24@gmail.com</a></p>
+  <p class="sub">Remote, any time zone. Open to relocation with sponsorship. · <a href="https://www.linkedin.com/in/hussain-singapuri-18437225a/">LinkedIn</a> · <a href="https://github.com/huss2003">More code on GitHub</a></p>
+</div></section>
+
+<footer><div class="wrap">© 2026 Hussain Singapuri · Built by hand, hosted free on GitHub Pages</div></footer>
+</body>
+</html>
