@@ -103,7 +103,7 @@ footer{padding:32px 0;color:var(--mute);font:13px var(--mono)}
 
 <section id="work"><div class="wrap">
   <h2>Selected GTM builds</h2>
-  <p class="sub">Five systems, each written up with the problem, the build and measured results. Simulation and synthetic results are labelled; nothing is a made-up customer number.</p>
+  <p class="sub">Five systems, each written up with the problem, the build and measured results. Each now has results on real public data (Wikidata, Criteo, public attack datasets, real vendor prices), shown first; simulation and synthetic results are labelled. Nothing is a made-up customer number.</p>
 
   <article class="proj">
     <div class="num">01</div>
@@ -113,7 +113,7 @@ footer{padding:32px 0;color:var(--mute);font:13px var(--mono)}
       <dl>
         <dt>Problem</dt><dd>Buying signals come in from many sources, and they all spell the same company differently. Naive joins either duplicate accounts or merge companies that are actually different.</dd>
         <dt>Built</dt><dd>Async connectors pull SEC Form D funding filings, Greenhouse, Lever and Ashby job boards, GitHub and news. An entity-resolution engine (blocking → Jaro-Winkler/TF-IDF features → trained scorer → union-find) merges mentions into canonical accounts, which are then scored with time-decayed signals. It runs incrementally on DuckDB, with a FastAPI and CLI front end.</dd>
-        <dt>Result</dt><dd>F1 0.974 on a 173-record hand-labelled gold set, vs 0.784 for an exact name/domain join. ~4,000 records/s at 50k records. A live run pulled 809 real signals and exposed a fund-vehicle merge bug, which is now fixed.</dd>
+        <dt>Result</dt><dd><b>Real data:</b> on 5,044 real company records from Wikidata (2,187 companies, deliberately hard: subsidiaries, rebrands, same-name firms), F1 0.400 vs 0.291 for an exact name/domain join (paired bootstrap gain +0.095 to +0.124). Precision 0.973 on generic businesses; the error analysis shows rebrands and country subsidiaries are what break it. Synthetic gold set: F1 0.974 vs 0.784. A live run pulled 809 real signals and exposed a fund-vehicle merge bug, which is now fixed.</dd>
       </dl>
       <div class="chips"><span>Python</span><span>DuckDB</span><span>FastAPI</span><span>Entity resolution</span><span>SEC EDGAR</span><span>Hypothesis</span></div>
       <div class="links"><a href="https://github.com/goalgetter53/signalgraph">signalgraph →</a></div>
@@ -128,7 +128,7 @@ footer{padding:32px 0;color:var(--mute);font:13px var(--mono)}
       <dl>
         <dt>Problem</dt><dd>Static cheapest-first waterfalls burn enrichment credits, because which provider works best depends on country, company size and seniority.</dd>
         <dt>Built</dt><dd>A self-hostable enrichment orchestrator. A contextual Thompson-sampling router learns the best provider order for each segment. It runs on a crash-safe SQLite job queue with leases, plus token-bucket rate limits, circuit breakers, a budget-capped cost ledger and idempotency keys.</dd>
-        <dt>Result</dt><dd>Simulation (50k contacts × 5 seeds): cost per verified email down 20.9% vs a static waterfall, closing 80% of the gap to the oracle. A provider outage costs only 0.9 pp of coverage. Property tests caught a real rate-limiter hang.</dd>
+        <dt>Result</dt><dd><b>Real inputs:</b> calibrated to real list prices (Apollo, Hunter, Prospeo, Dropcontact, Nov 2026) and a published 5,000-contact benchmark, the router cut cost per verified email 17.2% ± 4.2 pp vs cheapest-first (20k contacts × 5 seeds), mostly through its stopping rule. Net value per contact did not beat the static order, and the README says so. Outcomes are still simulated. Property tests caught a real rate-limiter hang.</dd>
       </dl>
       <div class="chips"><span>Python</span><span>asyncio</span><span>Thompson sampling</span><span>SQLite WAL</span><span>Circuit breakers</span><span>FastAPI</span></div>
       <div class="links"><a href="https://github.com/goalgetter53/waterfall-optimizer">waterfall-optimizer →</a></div>
@@ -143,7 +143,7 @@ footer{padding:32px 0;color:var(--mute);font:13px var(--mono)}
       <dl>
         <dt>Problem</dt><dd>AI-written outbound is generic, invents facts and is easy to hijack through prompt injection hidden in the web pages it reads.</dd>
         <dt>Built</dt><dd>Researcher, strategist, copywriter and critic agents run on an explicit state machine. Every claim in the copy must cite a checked research fact. It adds prompt-injection defences, cost budgets, traced spans and regression evals across prompt versions, a Bayesian A/B module, and a human approval queue. Nothing is ever auto-sent.</dd>
-        <dt>Result</dt><dd>0/14 red-team injection pages got through (10/14 with the defences off). In mock-mode evals, prompt v2 took clean first drafts from 17% to 100% and cut estimated cost per sequence by 40%. A/B simulation showed peeking at results inflates false winners from 6% to 21%.</dd>
+        <dt>Result</dt><dd><b>Real attacks:</b> on held-out tests from 3 public injection datasets (deepset, Lakera Gandalf, Microsoft BIPIA), the pattern detector catches 44.8% of 297 attacks (up from 25.2%) with 0 false alarms on benign prompts and 0 of 21,552 sentences flagged on 90 real B2B web pages. End to end, 14/100 embedded real attacks got through with guardrails on vs 31/100 off. In-house suite: 0/14 pages got through. In mock-mode evals, prompt v2 took clean first drafts from 17% to 100% and cut estimated cost per sequence by 40%. A/B simulation showed peeking at results inflates false winners from 6% to 21%.</dd>
       </dl>
       <div class="chips"><span>Claude API</span><span>Tool use</span><span>Prompt caching</span><span>Evals</span><span>Bayesian stats</span><span>FastAPI</span></div>
       <div class="links"><a href="https://github.com/goalgetter53/ai-sdr-crew">ai-sdr-crew →</a></div>
@@ -158,7 +158,7 @@ footer{padding:32px 0;color:var(--mute);font:13px var(--mono)}
       <dl>
         <dt>Problem</dt><dd>The CRM and the warehouse drift apart. Syncs overwrite reps' edits and create duplicates, and nobody can see what a sync will change before it runs.</dd>
         <dt>Built</dt><dd>Two-way warehouse ↔ HubSpot sync driven by a declarative YAML mapping with per-field conflict rules. A three-way diff produces a Terraform-style plan before apply. It batches API calls under rate limits, splits and retries partial failures, and keeps a dead-letter queue with replay. Tests run against a fake HubSpot server.</dd>
-        <dt>Result</dt><dd>Benchmarked against a fake HubSpot API: a 50k-record load used 75× fewer API calls than one-by-one syncing, with 0 rate-limit errors under Starter limits. In a fault run (43 rate-limit errors, 28 server errors, 16 lost responses), exactly the 25 bad rows were dead-lettered and the other 49,975 had 0 mismatches. Hypothesis state-machine tests show the sync converges and re-runs are no-ops.</dd>
+        <dt>Result</dt><dd><b>Real data:</b> 11,082 real companies from Wikidata, replaying 16,855 real dated changes (2016–2026) over 12 syncs: 1,031 API calls vs 54,366 one-by-one (52.7× fewer), 0 mismatches after injected 429s, 5xx and timeouts, and re-runs made 0 writes. The CRM side is a fake HubSpot enforcing HubSpot's documented limits. Generated-data run: a 50k-record load used 75× fewer API calls, with 0 rate-limit errors under Starter limits. In a fault run (43 rate-limit errors, 28 server errors, 16 lost responses), exactly the 25 bad rows were dead-lettered and the other 49,975 had 0 mismatches. Hypothesis state-machine tests show the sync converges and re-runs are no-ops.</dd>
       </dl>
       <div class="chips"><span>Python</span><span>HubSpot CRM v3</span><span>Postgres</span><span>Hypothesis</span><span>Rate limiting</span></div>
       <div class="links"><a href="https://github.com/goalgetter53/crm-sync-engine">crm-sync-engine →</a></div>
@@ -168,12 +168,12 @@ footer{padding:32px 0;color:var(--mute);font:13px var(--mono)}
   <article class="proj">
     <div class="num">05</div>
     <div>
-      <h3><a href="https://github.com/goalgetter53/gtm-attribution-lab">Attribution lab with ground truth</a></h3>
+      <h3><a href="https://github.com/goalgetter53/gtm-attribution-lab">Attribution lab: ground truth + real data</a></h3>
       <p class="tag">Analytics engineering · Attribution</p>
       <dl>
         <dt>Problem</dt><dd>Teams move budget based on attribution models nobody has ever validated. Last-touch quietly over-credits the final channel.</dd>
         <dt>Built</dt><dd>A synthetic B2B world with known channel effects. A DuckDB SQL warehouse is built in layers (21 models, 59 data tests). It runs first/last/linear/time-decay/U/W, Markov removal-effect and Shapley attribution, then scores each model against the truth across seeds and confounding levels, alongside Kaplan-Meier funnel timing.</dd>
-        <dt>Result</dt><dd>On synthetic data, last-touch had the lowest average error but ranked channels almost at random (ρ 0.12–0.23). It gave organic 17–21% credit when organic's true effect is zero, and gave webinars ~10% when their true share is ~27%. I report this honestly rather than presenting a model win.</dd>
+        <dt>Result</dt><dd><b>Real data:</b> on Criteo's public dataset (16.5M real ad impressions, 6.1M users, 438,730 conversions; top 10 campaigns + other), the models agree closely because only 9.4% of converting journeys touch more than one channel. Markov is the outlier, doubling one campaign's credit (1.73% vs 0.86% under last touch), and Criteo's own last-click label ranks campaigns differently from every model (ρ 0.74–0.82). Real data has no ground truth, so this measures disagreement, not accuracy. Synthetic: last-touch had the lowest average error but ranked channels almost at random (ρ 0.12–0.23). It gave organic 17–21% credit when organic's true effect is zero, and gave webinars ~10% when their true share is ~27%. I report this honestly rather than presenting a model win.</dd>
       </dl>
       <div class="chips"><span>DuckDB</span><span>SQL</span><span>Shapley</span><span>Markov chains</span><span>Kaplan-Meier</span><span>pandas</span></div>
       <div class="links"><a href="https://github.com/goalgetter53/gtm-attribution-lab">gtm-attribution-lab →</a></div>
