@@ -103,7 +103,7 @@ footer{padding:32px 0;color:var(--mute);font:13px var(--mono)}
 
 <section id="work"><div class="wrap">
   <h2>Selected GTM builds</h2>
-  <p class="sub">Five systems, each written up with the problem, the build and measured results. Each now has results on real public data (Wikidata, Criteo, public attack datasets, real vendor prices), shown first; simulation and synthetic results are labelled. Nothing is a made-up customer number.</p>
+  <p class="sub">Ten systems, each written up with the problem, the build and measured results. Each now has results on real public data (Wikidata, Criteo, public attack datasets, real vendor prices), shown first; simulation and synthetic results are labelled. Nothing is a made-up customer number.</p>
 
   <article class="proj">
     <div class="num">01</div>
@@ -177,6 +177,84 @@ footer{padding:32px 0;color:var(--mute);font:13px var(--mono)}
       </dl>
       <div class="chips"><span>DuckDB</span><span>SQL</span><span>Shapley</span><span>Markov chains</span><span>Kaplan-Meier</span><span>pandas</span></div>
       <div class="links"><a href="https://github.com/goalgetter53/gtm-attribution-lab">gtm-attribution-lab →</a></div>
+    </div>
+  </article>
+
+  <h2 style="margin-top:56px">Running now: systems that produce real data</h2>
+  <p class="sub">These five run on real data or in real operations. Where results need weeks or hand labels, the status says so.</p>
+
+  <article class="proj">
+    <div class="num">06</div>
+    <div>
+      <h3><a href="https://github.com/goalgetter53/lead2account">Lead-to-account matching and dedupe</a></h3>
+      <p class="tag">Data quality · LeanData-style routing</p>
+      <dl>
+        <dt>Problem</dt><dd>Every CRM has duplicate accounts, and inbound leads land on the wrong account or none, so routing breaks.</dd>
+        <dt>Built</dt><dd>Legal-form and domain normalisation (Public Suffix List, country sites, free-mail), 8-key blocking, a trained pair scorer, constrained clustering, parent–child hierarchies from GLEIF and Wikidata, and a lead matcher that returns account, confidence and reason codes.</dd>
+        <dt>Status</dt><dd><b>Real data:</b> 51,581 records (38,669 accounts, 12,912 leads) from 17,987 real companies in 11,492 corporate groups. Held-out test: account dedupe F1 0.771 vs 0.697 for an exact-match baseline; duplicate rate 58.1% → 21.9%; lead-to-account precision 0.905, recall 0.877. Labels come from registry IDs (LEI); a 500-pair hand-labelled check is in progress (0/500).</dd>
+      </dl>
+      <div class="chips"><span>Python</span><span>GLEIF LEI</span><span>Wikidata</span><span>Entity resolution</span><span>FastAPI labeller</span></div>
+      <div class="links"><a href="https://github.com/goalgetter53/lead2account">lead2account →</a></div>
+    </div>
+  </article>
+
+  <article class="proj">
+    <div class="num">07</div>
+    <div>
+      <h3><a href="https://github.com/goalgetter53/enrichment-benchmark">Open enrichment-provider benchmark</a></h3>
+      <p class="tag">Enrichment · Waterfalls · Benchmarks</p>
+      <dl>
+        <dt>Problem</dt><dd>Teams pick enrichment vendors from vendor-run benchmarks and never measure accuracy against the truth.</dd>
+        <dt>Built</dt><dd>A labelling app for a hand-verified ground-truth set, adapters for 7 providers plus 2 verifiers, scoring with confidence intervals, and a pip-installable library that finds the cheapest provider order for a coverage target.</dd>
+        <dt>Status</dt><dd><b>Real data, re-analysed:</b> two public per-contact benchmarks (5,000 contacts × 14 tools, and 288 × 7). Cheapest route to 80% valid coverage: icypeas → apollo → hunter at $0.0179 per contact; all 14 tools together reach 93.1%; trusting the first email any tool returns leaves 11.4% of delivered emails invalid. Own hand-verified set: in progress (0/1,000).</dd>
+      </dl>
+      <div class="chips"><span>Python</span><span>httpx</span><span>Dynamic programming</span><span>Wilson CIs</span><span>FastAPI</span></div>
+      <div class="links"><a href="https://github.com/goalgetter53/enrichment-benchmark">enrichment-benchmark →</a></div>
+    </div>
+  </article>
+
+  <article class="proj">
+    <div class="num">08</div>
+    <div>
+      <h3><a href="https://github.com/goalgetter53/signal-backtest">Buying-signal model, backtested on real outcomes</a></h3>
+      <p class="tag">Signals · Backtesting · Experiment design</p>
+      <dl>
+        <dt>Problem</dt><dd>Signal scores usually have no outcomes behind them, so nobody knows which signals actually predict replies.</dd>
+        <dt>Built</dt><dd>Daily collectors for job posts (Greenhouse, Lever, Ashby, Workable), tech-stack changes, website changes, funding and GitHub activity, stored as dated snapshots so the backtest only uses signals seen before each send. Lift per signal with permutation tests and a power analysis.</dd>
+        <dt>Status</dt><dd><b>Collecting now:</b> 1,000 companies tracked daily. First snapshot: 3,431 open roles at 151 companies and 1,829 tech-stack detections at 708 companies. The backtest against real reply and meeting outcomes from outbound-engine starts once campaigns run (week 0 of 8).</dd>
+      </dl>
+      <div class="chips"><span>Python</span><span>DuckDB</span><span>Parquet</span><span>GitHub Actions cron</span><span>Permutation tests</span></div>
+      <div class="links"><a href="https://github.com/goalgetter53/signal-backtest">signal-backtest →</a></div>
+    </div>
+  </article>
+
+  <article class="proj">
+    <div class="num">09</div>
+    <div>
+      <h3><a href="https://github.com/goalgetter53/outbound-engine">Live outbound engine for my agency</a></h3>
+      <p class="tag">Outbound · Deliverability · Compliance</p>
+      <dl>
+        <dt>Problem</dt><dd>Cold email works only with clean infrastructure, tight bounce control and honest measurement.</dd>
+        <dt>Built</dt><dd>DNS checks (SPF, DKIM, DMARC, MTA-STS, blocklists), a warmup and inbox-rotation scheduler, free verification, 3-step sequences with one-click unsubscribe, auto-pause above 2% bounces, reply classification, HubSpot sync and a public anonymised results dashboard. CAN-SPAM, UK/EU GDPR, CASL and Australian Spam Act rules built in.</dd>
+        <dt>Status</dt><dd><b>Week 0:</b> first real prospect list built from public job boards and Wikidata: 611 companies, 573 matching the ICP (243 agencies, 330 SaaS across the US, UK, Canada and Australia). The public dashboard goes live when sending starts; it will report sent, bounce rate, reply rate, meetings and cost per meeting.</dd>
+      </dl>
+      <div class="chips"><span>Python</span><span>Gmail API</span><span>DNS-over-HTTPS</span><span>HubSpot</span><span>Cloudflare Workers</span></div>
+      <div class="links"><a href="https://github.com/goalgetter53/outbound-engine">outbound-engine →</a></div>
+    </div>
+  </article>
+
+  <article class="proj">
+    <div class="num">10</div>
+    <div>
+      <h3><a href="https://github.com/goalgetter53/speed-to-lead">WhatsApp-first speed-to-lead in a real shop</a></h3>
+      <p class="tag">Inbound · WhatsApp · SLA</p>
+      <dl>
+        <dt>Problem</dt><dd>Local businesses lose enquiries because nobody replies for hours.</dd>
+        <dt>Built</dt><dd>Built for United Trader, a paint shop in Pune: WhatsApp Cloud API and Meta Lead Ads webhooks, Hindi/Marathi/English intent scoring, routing to the right person, a first reply in seconds, 5- and 15-minute SLA alerts, and source attribution through to the sale.</dd>
+        <dt>Status</dt><dd><b>Week 0:</b> a 2-week baseline of today's manual reply times comes first, so the before/after is real. The dashboard will show lead volume, median and p90 response time, and conversion by source.</dd>
+      </dl>
+      <div class="chips"><span>FastAPI</span><span>WhatsApp Cloud API</span><span>Supabase</span><span>Telegram alerts</span><span>Hindi/Marathi NLP</span></div>
+      <div class="links"><a href="https://github.com/goalgetter53/speed-to-lead">speed-to-lead →</a></div>
     </div>
   </article>
 
